@@ -27,8 +27,8 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        //TextView textview = findViewById(R.id.text_view);
-        //textview.setText(R.string.name);
+        TextView textview = findViewById(R.id.text_view);
+        textview.setText(R.string.name);
         binding.textView.setText(R.string.name);
         binding.imagePokemon.setImageResource(R.drawable.baseline_catching_monbo_24);
     }
