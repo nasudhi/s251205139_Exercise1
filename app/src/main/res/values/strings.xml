@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Exercise1</string>
+    <string name="name">Nishida</string>
+    <string name="name2">Takumi</string>
+    <string name="saveButtonText">Save</string>
+    <string name="ChangeButtonText">Change</string>
 </resources>
