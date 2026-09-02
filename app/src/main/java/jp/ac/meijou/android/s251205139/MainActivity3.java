@@ -9,11 +9,17 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.Optional;
+
 import jp.ac.meijou.android.s251205139.databinding.ActivityMain3Binding;
 
 public class MainActivity3 extends AppCompatActivity {
 
     private ActivityMain3Binding binding;
+
+    private int display;
+    private int operand1;
+    private int operand2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +37,21 @@ public class MainActivity3 extends AppCompatActivity {
         Intent intent = getIntent();
         String sentText = intent.getStringExtra("editText");
         binding.calcField.setText(sentText);
+
+        Optional.ofNullable(getIntent().getStringExtra("text"))
+                        .ifPresent(text -> binding.calcField.setText(text));
+
+        binding.buttonOk.setOnClickListener(view -> {
+            var ok_intent = new Intent();
+            ok_intent.putExtra("ret", "OK");
+            setResult(RESULT_OK, ok_intent);
+            finish();
+        });
+
+        binding.buttonCancel.setOnClickListener(view -> {
+            setResult(RESULT_CANCELED);
+            finish();
+        });
 
         binding.button0.setOnClickListener(view -> {
 
@@ -80,5 +101,8 @@ public class MainActivity3 extends AppCompatActivity {
         binding.buttonAC.setOnClickListener(view -> {
 
         });
+    }
+    private void pushOperand(int num) {
+
     }
 }
