@@ -1,7 +1,9 @@
 package jp.ac.meijou.android.s251205139;
 
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -45,8 +47,22 @@ public class MainActivity5 extends AppCompatActivity {
             return insets;
         });
 
+        //getImage("https://placehold.jp/350x350.png");
+        binding.buttonGet.setOnClickListener(view -> {
+            var text = binding.editText.getText().toString();
+
+            var url = Uri.parse("https://placehold.jp/3d4070/ffffff/500x500.png")
+                    .buildUpon()
+                    .appendQueryParameter("text", text)
+                    .build()
+                    .toString();
+            Log.d("test",url);
+            getImage(url);
+        });
+    }
+    private void getImage(String url) {
         var request = new Request.Builder()
-                .url("https://placehold.jp/350x350.png")
+                .url(url)
                 .build();
 
         okHttpClient.newCall(request).enqueue(new Callback() {
